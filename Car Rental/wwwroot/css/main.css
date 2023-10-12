@@ -1,0 +1,15 @@
+﻿table {
+    border: 2px solid black;
+}
+
+.full_width {
+    min-width: 700px;
+    }
+
+.half_width {
+    min-width: 350px;
+}
+
+div{
+    margin-bottom: 20px;
+}

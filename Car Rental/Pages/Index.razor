@@ -1,0 +1,86 @@
+﻿@page "/"
+@using Car_Rental.Business.Classes;
+@using Car_Rental.Common.Enums;
+@using Car_Rental.Data.Classes;
+@inject BookingProcessor bp;
+
+<link rel="stylesheet" type="text/css" href="css/main.css">
+
+<h1>Car Rental Assignment - G</h1>
+
+<!-- Vehicles -->
+<div>
+    Vehicles
+    <table class="full_width">
+        <tr>
+            <th width="100px">RegNo</th>
+            <th width="100px">Make</th>
+            <th width="100px">Odometer</th>
+            <th width="100px">Cost Km</th>
+            <th width="150px">Vehicle Type</th>
+            <th width="75px">$ Day</th>
+            <th width="75px">Status</th>
+        </tr>
+        @foreach (var vehicle in bp.GetVehicles())
+        {
+            <tr>
+                <td>@vehicle.RegistrationNumber</td>
+                <td>@vehicle.Make</td>
+                <td>@vehicle.Odometer</td>
+                <td>@vehicle.CostPerKm</td>
+                <td>@vehicle.VehicleType</td>
+                <td>@vehicle.CostPerDay</td>
+                <td>@vehicle.Status</td>
+            </tr>
+        }
+    </table>
+</div>
+<!-- Bookings -->
+<div>
+    Bookings
+    <table class="full_width">
+        <tr>
+            <th>RegNo</th>
+            <th>Customer</th>
+            <th>Km Rented</th>
+            <th>Km Returned</th>
+            <th>Rented</th>
+            <th>Returned</th>
+            <th>Cost</th>
+            <th>Status</th>
+        </tr>
+        @foreach (var booking in bp.GetBookings())
+        {
+            <tr>
+                <th>@booking.RegistrationNumber</th>
+                <td>@booking.Customer</td>
+                <td>@booking.OdometerRented</td>
+                <td>@(booking.Status.Equals(BookingStatuses.Closed) ? booking.OdometerReturned : "")</td>
+                <td>@booking.DateRented</td>
+                <td>@(booking.Status.Equals(BookingStatuses.Closed) ? booking.DateReturned : "")</td>
+                <td>@(booking.Status.Equals(BookingStatuses.Closed) ? booking.Cost : "")</td>
+                <td>@booking.Status</td>
+            </tr>
+        }
+    </table>
+</div>
+<!-- Customers -->
+<div>
+    Customers
+    <table class="half_width">
+        <tr>
+            <th>SSN</th>
+            <th>Last Name</th>
+            <th>First Name</th>
+        </tr>
+
+        @foreach (var person in bp.GetCustomers())
+        {
+                <tr>
+                    <td>@person.SocialSecurityNumber</td>
+                    <td>@person.FirstName</td>
+                    <td>@person.LastName</td>
+                </tr>
+        }
+    </table>
+</div>
