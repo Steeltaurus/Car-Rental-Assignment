@@ -26,8 +26,8 @@ public class CollectionData : IData
 
         _bookings.Add(new Booking(1, "GHI789", "Doe John (98765)", 1000, new DateOnly(2023, 9, 9)));
         _bookings.Add(new Booking(2, "JKL012", "Doe Jane (12345)", 5000, new DateOnly(2023, 9, 9)));
-        
-        _bookings.Single(b => b.RegistrationNumber.Equals("JKL012")).ReturnVehicle(5000, new DateOnly(2023, 9, 9), 300);
+
+        //_bookings.Single(b => b.RegistrationNumber.Equals("JKL012")).ReturnVehicle(5000, new DateOnly(2023, 9, 9), 300);
     }
 
     public IEnumerable<IPerson> GetPersons() => _persons;

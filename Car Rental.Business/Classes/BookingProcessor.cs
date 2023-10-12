@@ -21,6 +21,15 @@ public class BookingProcessor
     }
     public IEnumerable<IBooking> GetBookings()
     {
+        var booking = _db.GetBookings().Single(b => b.RegistrationNumber.Equals("JKL012"));
+        var vehicle = _db.GetVehicles().Single(b => b.RegistrationNumber.Equals("JKL012"));
+        var date = new DateOnly(2023, 9, 9);
+        var odometer = 5000;
+        var cost = (vehicle.CostPerDay * (date.DayNumber - booking.DateRented.DayNumber + 1))
+                 + (vehicle.CostPerKm * (odometer - booking.OdometerRented));
+        
+        booking.ReturnVehicle(odometer, date, cost);
+        
         return _db.GetBookings();
     }
 }
