@@ -20,14 +20,12 @@ public class CollectionData : IData
 
         _vehicles.Add(new Car("ABC123", "Volvo", 10000, 1.0, VehicleTypes.Combi));
         _vehicles.Add(new Car("DEF456", "Saab", 20000, 1.0, VehicleTypes.Sedan));
-        _vehicles.Add(new Car("GHI789", "Tesla", 1000, 3.0, VehicleTypes.Sedan));
+        _vehicles.Add(new Car("GHI789", "Tesla", 1000, 3.0, VehicleTypes.Sedan, VehicleStatuses.Booked));
         _vehicles.Add(new Car("JKL012", "Jeep", 5000, 1.5, VehicleTypes.Van));
         _vehicles.Add(new Motorcycle("MNO234", "Yamaha", 30000, 0.5, VehicleTypes.Motorcycle));
 
         _bookings.Add(new Booking(1, "GHI789", "Doe John (98765)", 1000, new DateOnly(2023, 9, 9)));
         _bookings.Add(new Booking(2, "JKL012", "Doe Jane (12345)", 5000, new DateOnly(2023, 9, 9)));
-
-        //_bookings.Single(b => b.RegistrationNumber.Equals("JKL012")).ReturnVehicle(5000, new DateOnly(2023, 9, 9), 300);
     }
 
     public IEnumerable<IPerson> GetPersons() => _persons;

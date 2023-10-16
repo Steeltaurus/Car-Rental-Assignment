@@ -26,11 +26,12 @@ public class Booking : IBooking
         Status = BookingStatuses.Open;
     }
 
-    public void ReturnVehicle(int odometer, DateOnly date, double cost)
+    public void ReturnVehicle(IVehicle vehicle, int odometer, DateOnly date)
     {
         OdometerReturned = odometer;
         DateReturned = date;
-        Cost = cost;
         Status = BookingStatuses.Closed;
+        Cost = vehicle.CostPerDay * ((this.DateReturned.DayNumber - this.DateRented.DayNumber) + 1)
+             + vehicle.CostPerKm * (this.OdometerReturned - this.OdometerRented);
     }
 }

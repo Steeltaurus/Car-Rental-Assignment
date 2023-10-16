@@ -1,5 +1,21 @@
-﻿table {
-    border: 2px solid black;
+﻿body {
+    font-size: 14px;
+}
+
+table {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 5px;
+}
+
+thead tr, tbody tr {
+    border-bottom: 1px solid black;
+}
+
+tbody tr:hover {
+    background-color: lightgray;
 }
 
 .full_width {
@@ -11,5 +27,5 @@
 }
 
 div{
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }

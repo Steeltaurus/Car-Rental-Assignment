@@ -14,14 +14,14 @@ public class Motorcycle : IVehicle
     public VehicleStatuses Status { get; set; }
 
     public Motorcycle(string registrationNumber, string make, int odometer, double costPerKm,
-        VehicleTypes vehicleType)
+        VehicleTypes vehicleType, VehicleStatuses status = VehicleStatuses.Available)
     {
         RegistrationNumber = registrationNumber;
         Make = make;
         Odometer = odometer;
         CostPerKm = costPerKm;
         VehicleType = vehicleType;
-        Status = VehicleStatuses.Available;
+        Status = status;
         CostPerDay = 50;
     }
 }

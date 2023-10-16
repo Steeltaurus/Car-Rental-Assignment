@@ -14,5 +14,5 @@ public interface IBooking
     public double Cost { get; }
     public BookingStatuses Status { get; }
 
-    public void ReturnVehicle(int odometer, DateOnly date, double cost);
+    public void ReturnVehicle(IVehicle vehicle, int odometer, DateOnly date);
 }

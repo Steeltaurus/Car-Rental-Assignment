@@ -14,14 +14,14 @@ public class Car : IVehicle
     public VehicleStatuses Status { get; private set; }
 
     public Car(string registrationNumber, string make, int odometer, double costPerKm,
-        VehicleTypes vehicleType)
+        VehicleTypes vehicleType, VehicleStatuses status = VehicleStatuses.Available)
     {
         RegistrationNumber = registrationNumber;
         Make = make;
         Odometer = odometer;
         CostPerKm = costPerKm;
         VehicleType = vehicleType;
-        Status = VehicleStatuses.Available;
+        Status = status;
 
         switch (vehicleType)
         {

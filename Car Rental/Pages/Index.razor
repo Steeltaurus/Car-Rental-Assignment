@@ -13,24 +13,27 @@
     Vehicles
     <table class="full_width">
         <tr>
-            <th width="100px">RegNo</th>
-            <th width="100px">Make</th>
-            <th width="100px">Odometer</th>
-            <th width="100px">Cost Km</th>
-            <th width="150px">Vehicle Type</th>
-            <th width="75px">$ Day</th>
-            <th width="75px">Status</th>
+            <th>RegNo</th>
+            <th>Make</th>
+            <th>Odometer</th>
+            <th>Cost Km</th>
+            <th>Vehicle Type</th>
+            <th>$ Day</th>
+            <th>Status</th>
         </tr>
         @foreach (var vehicle in bp.GetVehicles())
         {
             <tr>
-                <td>@vehicle.RegistrationNumber</td>
+                <th>@vehicle.RegistrationNumber</th>
                 <td>@vehicle.Make</td>
                 <td>@vehicle.Odometer</td>
                 <td>@vehicle.CostPerKm</td>
                 <td>@vehicle.VehicleType</td>
                 <td>@vehicle.CostPerDay</td>
-                <td>@vehicle.Status</td>
+                <td class="position-relative">
+                    <span class="badge rounded-pill position-absolute top-50 start-50 translate-middle @(vehicle.Status == @VehicleStatuses.Available ? "bg-black" : "bg-danger")">@vehicle.Status
+                    </span>
+                </td>
             </tr>
         }
     </table>
@@ -39,6 +42,7 @@
 <div>
     Bookings
     <table class="full_width">
+        <thead>
         <tr>
             <th>RegNo</th>
             <th>Customer</th>
@@ -49,6 +53,8 @@
             <th>Cost</th>
             <th>Status</th>
         </tr>
+        </thead>
+        <tbody>
         @foreach (var booking in bp.GetBookings())
         {
             <tr>
@@ -59,28 +65,35 @@
                 <td>@booking.DateRented</td>
                 <td>@(booking.Status.Equals(BookingStatuses.Closed) ? booking.DateReturned : "")</td>
                 <td>@(booking.Status.Equals(BookingStatuses.Closed) ? booking.Cost : "")</td>
-                <td>@booking.Status</td>
+                <td class="position-relative">
+                        <span class="badge rounded position-absolute top-50 start-50 translate-middle @(booking.Status == BookingStatuses.Open ? "bg-success" : "bg-danger")">@booking.Status
+                        </span>
+                </td>
             </tr>
         }
+        </tbody>
     </table>
 </div>
 <!-- Customers -->
 <div>
     Customers
     <table class="half_width">
+        <thead>
         <tr>
             <th>SSN</th>
             <th>Last Name</th>
             <th>First Name</th>
         </tr>
-
+        </thead>
+        <tbody>
         @foreach (var person in bp.GetCustomers())
         {
                 <tr>
-                    <td>@person.SocialSecurityNumber</td>
+                    <th>@person.SocialSecurityNumber</th>
                     <td>@person.FirstName</td>
                     <td>@person.LastName</td>
                 </tr>
         }
+        </tbody>
     </table>
 </div>
